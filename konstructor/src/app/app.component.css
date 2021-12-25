@@ -1,0 +1,26 @@
+.menu {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 0;
+  background: #3F51B5;
+  color: white;
+}
+
+.logo {
+  position: relative;
+  top: 8px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links button {
+  margin-right: 10px;
+}
+
+.active-link {
+  cursor: pointer;
+}

@@ -1,0 +1,77 @@
+<div class="main-container">
+  <mat-card class="game-boundary">
+    <mat-grid-list cols="9" rowHeight="1:1" class="game-boundary__grid">
+      <mat-grid-tile
+        class="grid-tile"
+        *ngFor="let i of gridTiles; let ind = index"
+      >
+        <div
+          class="grid-tile__block"
+          [ngClass]="{'single-block-active': i.active, 'single-block-inactive': !i.active}"
+        >
+          <span style="opacity: 0; position: absolute">{{i.id}}</span>
+          <img *ngIf="i.type === 'battery'" src="../../assets/battery.png" alt="" class="grid-tile__icon">
+          <img *ngIf="i.type === 'conductorX'" src="../../assets/conductorX.png" alt="" class="grid-tile__icon">
+          <img *ngIf="i.type === 'conductorY'" src="../../assets/conductorY.png" alt="" class="grid-tile__icon">
+          <img *ngIf="i.type === 'lighter'" src="../../assets/lighter.png" alt="" class="grid-tile__icon">
+          <img *ngIf="i.type === 'conductorXY'" src="../../assets/conductorXY.png" alt="" class="grid-tile__icon">
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="spawn-area">
+      <div class="spawn-area__info">
+        <p class="spawn-area__score">Счёт: {{currentPoints}}</p>
+        <p class="spawn-area__score" style="white-space: pre;">Рекорд: {{authStatus ? (newScoreReached ? currentPoints : currentUser.score) + '\n ' : '\nСначала войдите'}}</p>
+        <button mat-raised-button color="primary" class="spawn-area__btn" (click)="resetGame()">Очистить поле</button>
+      </div>
+      <div class="spawn-area__box">
+        <div class="spawn-area__box_draggable" cdkDragBoundary=".game-boundary" cdkDrag id="battery" [cdkDragDisabled]="batteryCount === 0" (cdkDragEnded)="onDetailDrop($event)">
+          <img src="../../assets/battery.png" alt="" class="grid-tile__icon">
+        </div>
+        <h2 class="spawn-area__box_count">{{batteryCount}}</h2>
+      </div>
+      <div class="spawn-area__box">
+        <div class="spawn-area__box_draggable" cdkDragBoundary=".game-boundary" cdkDrag id="conductorXY" [cdkDragDisabled]="conductorXYcount === 0" (cdkDragEnded)="onDetailDrop($event)">
+          <img src="../../assets/conductorXY.png" alt="" class="grid-tile__icon">
+        </div>
+        <h2 class="spawn-area__box_count">{{conductorXYcount}}</h2>
+      </div>
+      <div class="spawn-area__box">
+        <div class="spawn-area__box_draggable" cdkDragBoundary=".game-boundary" cdkDrag id="conductorX" (cdkDragEnded)="onDetailDrop($event)">
+          <img src="../../assets/conductorX.png" alt="" class="grid-tile__icon">
+        </div>
+        <h2 class="spawn-area__box_count">&#8734;</h2>
+      </div>
+      <div class="spawn-area__box">
+        <div class="spawn-area__box_draggable" cdkDragBoundary=".game-boundary" cdkDrag id="conductorY" (cdkDragEnded)="onDetailDrop($event)">
+          <img src="../../assets/conductorY.png" alt="" class="grid-tile__icon">
+        </div>
+        <h2 class="spawn-area__box_count">&#8734;</h2>
+      </div>
+      <div class="spawn-area__box">
+        <div class="spawn-area__box_draggable" cdkDragBoundary=".game-boundary" cdkDrag id="lighter" (cdkDragEnded)="onDetailDrop($event)">
+          <img src="../../assets/lighter.png" alt="" class="grid-tile__icon">
+        </div>
+        <h2 class="spawn-area__box_count">&#8734;</h2>
+      </div>
+    </div>
+  </mat-card>
+
+
+  <mat-card class="scoreboard">
+    <mat-card-title class="scoreboard__title">Топ игроков</mat-card-title>
+    <mat-divider></mat-divider>
+    <div class="scoreboard__subtitle">
+      <mat-card-content style="margin-left: 30px;">Имя</mat-card-content>
+      <mat-card-content style="margin-right: 30px;">Рекорд</mat-card-content>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="scoreboard__player-list">
+      <div class="scoreboard__player" *ngFor="let user of userList; let i = index">
+        <mat-card-content style="margin-left: 15px;">{{i + 1}}.  {{user.username}}{{i === 0 ? ' 👑' : ''}}</mat-card-content>
+        <mat-card-content style="margin-right: 15px;">{{user.score}}</mat-card-content>
+      </div>
+    </div>
+  </mat-card>
+</div>
+

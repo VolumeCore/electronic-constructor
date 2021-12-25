@@ -1,0 +1,22 @@
+<mat-card class="reg-card">
+  <mat-card-title style="margin-top: 10px;">Регистрация</mat-card-title>
+  <form class="reg-form" #regForm="ngForm">
+
+    <mat-form-field class="reg-form__field" appearance="fill">
+      <mat-label>Логин</mat-label>
+      <input matInput placeholder="username" [(ngModel)]="username" #userName="ngModel" name="username" minlength="3" maxlength="10" required pattern="^[a-zA-Zа-яА-Я0-9]+$">
+      <mat-error *ngIf="userName.hasError('pattern')">Только буквы и цифры</mat-error>
+      <mat-error *ngIf="userName.hasError('minlength')">Минимальная длина 3 символа</mat-error>
+      <mat-error *ngIf="userName.hasError('maxlength')">Максимальная длина 10 символов</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="reg-form__field" appearance="fill">
+      <mat-label>Пароль</mat-label>
+      <input [type]="passwordType" matInput placeholder="*******" [(ngModel)]="password" #passWord="ngModel" name="password" minlength="5" maxlength="999" required>
+      <mat-error *ngIf="passWord.invalid">Минимальная длина 5 символов</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox style="margin-bottom: 10px;" (click)="showPassword()">Показать пароль</mat-checkbox>
+    <button [disabled]="regForm.invalid" mat-raised-button color="accent" type="submit" (click)="register()">Зарегистрироваться</button>
+  </form>
+</mat-card>

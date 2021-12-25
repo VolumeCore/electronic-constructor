@@ -1,0 +1,241 @@
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto auto;
+  width: 1600px;
+}
+
+.game-boundary {
+  position: relative;
+  width: 925px;
+  height: 800px;
+  max-width: 100%;
+}
+
+.game-boundary__grid {
+  width: 900px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.grid-tile {
+  border: 2px solid rgba(194, 24, 91, 0.63);
+}
+
+.spawn-area {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.spawn-area__score {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.spawn-area__score + .spawn-area__score {
+  margin-bottom: 10px;
+}
+
+.spawn-area__box {
+  margin-top: 20px;
+}
+
+.spawn-area__box_draggable {
+  width: 70px;
+  height: 70px;
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: move;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: none;
+  border-radius: 4px;
+  margin-right: 25px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 10px;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.spawn-area__box_draggable:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.spawn-area__box_count {
+  margin-top: 4px;
+  margin-bottom: 0;
+  text-align: center;
+  margin-right: 25px;
+}
+
+.spawn-area__btn {
+  width: 150px;
+  height: 50px;
+  margin-top: 7px;
+}
+
+.single-block-active {
+  width: 100px;
+  height: 100px;
+  background: rgb(251,164,63);
+  background: radial-gradient(circle, rgba(251,164,63,1) 0%, rgba(255,255,255,1) 75%);
+  transition: all 1s;
+}
+
+.single-block-inactive {
+  filter: grayscale(100%);
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  transition: all 1s;
+}
+
+.grid-tile__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items :center;
+}
+
+.grid-tile__icon {
+  width: 60px;
+  height: 60px;
+}
+
+.scoreboard {
+  width: 340px;
+}
+
+.scoreboard__title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.scoreboard__subtitle {
+  margin: 20px auto -10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  width: 280px;
+}
+
+.scoreboard__player-list {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 700px;
+}
+
+.scoreboard__player {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  width: 290px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.scoreboard__player:nth-child(1) {
+  margin-top: 10px;
+  color: #FE9923;
+}
+
+.scoreboard__player:nth-child(2) {
+  color: #C1C1C1;
+}
+
+.scoreboard__player:nth-child(3) {
+  color: #844700;
+}
+
+@media screen and (max-width: 1440px) {
+  .main-container {
+    width: 1070px;
+    margin: 10px auto auto;
+  }
+
+  .game-boundary {
+    width: 625px;
+    height: 500px;
+  }
+
+  .game-boundary__grid {
+    width: 600px;
+  }
+
+  .spawn-area__box_draggable {
+    width: 50px;
+    height: 50px;
+  }
+
+  .grid-tile__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .spawn-area {
+    margin-top: 0;
+  }
+
+  .spawn-area__score {
+    font-weight: 500;
+    font-size: 10px;
+    margin-bottom: 0;
+    line-height: 15px;
+  }
+
+  .spawn-area__score + .spawn-area__score {
+    margin-bottom: 0;
+  }
+
+  .spawn-area__box {
+    margin-top: 2px;
+  }
+
+  .spawn-area__btn {
+    width: 100px;
+    height: 33px;
+    font-size: 10px;
+    margin-top: 3px;
+  }
+
+  .scoreboard {
+    width: 227px;
+  }
+
+  .scoreboard__title {
+    margin-bottom: 6px;
+  }
+
+  .scoreboard__subtitle {
+    margin: 14px auto -7px;
+    width: 187px;
+  }
+
+  .scoreboard__player-list {
+    height: 400px;
+  }
+
+  .scoreboard__player {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    width: 195px;
+    height: 33px;
+    line-height: 33px;
+  }
+
+  .scoreboard__player:nth-child(1) {
+    margin-top: 6px;
+  }
+}

@@ -1,0 +1,19 @@
+<mat-card class="login-card">
+  <mat-card-title style="margin-top: 10px;">Пожалуйста, авторизуйтесь</mat-card-title>
+  <form class="login-form" #loginForm="ngForm">
+    <mat-form-field class="login-form__field" appearance="fill">
+      <mat-label>Логин</mat-label>
+      <input matInput placeholder="username" [(ngModel)]="username" #userName="ngModel" name="username" required>
+      <mat-error *ngIf="userName.invalid">Заполните поле</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="login-form__field" appearance="fill">
+      <mat-label>Пароль</mat-label>
+      <input [type]="passwordType" matInput placeholder="*******" [(ngModel)]="password" #passWord="ngModel" name="password" required>
+      <mat-error *ngIf="passWord.invalid">Заполните поле</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox style="margin-bottom: 10px;" (click)="showPassword()">Показать пароль</mat-checkbox>
+    <button [disabled]="loginForm.invalid" mat-raised-button color="accent" type="submit" (click)="login()">Войти</button>
+  </form>
+</mat-card>

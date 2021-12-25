@@ -1,0 +1,9 @@
+<mat-card class="menu">
+  <mat-card-title class="logo" routerLink="/" routerLinkActive="active">👾 Электронный конструктор</mat-card-title>
+  <div class="nav-links">
+    <button mat-raised-button color="accent" routerLink="login" routerLinkActive="active" [disabled]="authStatus">Войти</button>
+    <button mat-raised-button color="accent" (click)="logout()" *ngIf="authStatus">Выйти</button>
+    <button mat-raised-button color="accent" routerLink="register" routerLinkActive="active" *ngIf="!authStatus">Регистрация</button>
+  </div>
+</mat-card>
+<router-outlet></router-outlet>
