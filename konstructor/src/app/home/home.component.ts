@@ -93,6 +93,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   incrementPoints() {
     this.currentPoints++;
+    this.store.dispatch(loadDataEffect());
 
     if (this.currentPoints >= this.currentUser.score) {
       this.newScoreReached = true;
@@ -100,7 +101,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       let newUser = Object.assign({}, this.currentUser);
       newUser.score = this.currentPoints;
 
-      this.store.dispatch(loadDataEffect());
       this.store.dispatch(updateScoreEffect({data: newUser}));
     }
   }
