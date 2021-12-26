@@ -230,6 +230,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     this.batteryCount = 3;
     this.conductorXYcount = 6;
+    this.newScoreReached = false;
+    this.store.dispatch(loadDataEffect());
   }
 
   public get authStatus(): boolean {
